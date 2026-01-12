@@ -8,7 +8,7 @@ from langchain_core.tools import tool
 from langchain_ollama import OllamaEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_pinecone import PineconeVectorStore
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+# from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.types import Command
 from pydantic import BaseModel
@@ -20,14 +20,12 @@ class QueryRequest(BaseModel):
     user_id: str
     question: str
 
-
 class QueryResponse(BaseModel):
     question: str
     answer: str
     user_id: str
     message: str
     status: str
-
 
 load_dotenv()
 loader = PyPDFLoader('hr_manual.pdf')
@@ -169,3 +167,4 @@ def query(request: QueryRequest):
         message="Success",
         status="Success"
     )
+
